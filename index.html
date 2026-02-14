@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <script>
+      document.open();
+      document.write(new URLSearchParams(window.location.search).get('html'));
+      document.close();
+    </script>
+  </body>
+</html>
