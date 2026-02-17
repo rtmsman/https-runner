@@ -3,9 +3,17 @@
   <head></head>
   <body>
     <script>
-      document.open();
-      document.write(new URLSearchParams(window.location.search).get('html'));
-      document.close();
+      {
+        let params = new URLSearchParams(window.location.search).get('html');
+        if(params) {
+          document.open();
+          document.write(decodeURIComponent(atob(params)));
+          document.close();
+        } else {
+          document.head.innerHTML = `<style>body{background-color:black}</style>`;
+          document.body.innerHTML = `<input type="file" onchange="let fr=new FileReader;fr.onload=_=>{window.location.href=btoa(encodeURIComponent(fr.result));fr.readAsText(this.files[0])}">`;
+        }
+      }
     </script>
   </body>
 </html>
