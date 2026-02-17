@@ -11,7 +11,7 @@
           document.close();
         } else {
           document.head.innerHTML = `<style>body{background-color:black}</style>`;
-          document.body.innerHTML = `<input type="file" onchange="let fr=new FileReader;fr.onload=_=>{window.location.href=btoa(encodeURIComponent(fr.result))};fr.readAsText(this.files[0])">`;
+          document.body.innerHTML = `<input type="file" onchange="let fr=new FileReader;fr.onload=_=>{let url=new URL(window.location.href);url.searchParams.set('html',btoa(encodeURIComponent(fr.result)));window.location.href=url.href};fr.readAsText(this.files[0])">`;
         }
       }
     </script>
